@@ -1,18 +1,18 @@
 # ForteFlow
 
-A production-style business operations platform built with React, TypeScript, and modern full-stack technologies.
+A business operations management platform built with React, TypeScript, and modern full-stack technologies.
 
-## Status
+## Project Status
 
-🚧 In Development
+🚧 Active Development
 
 ## Overview
 
-ForteFlow is a business operations management platform designed to help small businesses and teams manage clients, projects, tasks, invoices, and operational activity from a unified workspace.
+ForteFlow is a business operations platform designed to help small businesses and teams manage clients, projects, tasks, invoices, and operational activities from a unified workspace.
 
-The project is being developed as a long-term portfolio project while exploring modern frontend and full-stack development practices.
+The application is being developed as a long-term software engineering project, with an emphasis on maintainable architecture, practical engineering principles, and production-quality implementation.
 
-## Tech Stack
+## Technology Stack
 
 ### Frontend
 
@@ -22,8 +22,12 @@ The project is being developed as a long-term portfolio project while exploring 
 - React Router
 - TanStack Query
 - Tailwind CSS
+- React Hook Form
+- Zod
+- Recharts
+- Lucide React
 
-### Backend & Data
+### Backend and Database
 
 - Supabase
 - PostgreSQL
@@ -33,31 +37,48 @@ The project is being developed as a long-term portfolio project while exploring 
 - Vitest
 - React Testing Library
 
-### Tooling
+### Development Tools
 
 - Git
 - GitHub
 - ESLint
 - Prettier
 
-## Core Features
+## Planned Features
 
-- Authentication
-- Dashboard
-- Client management
+- User authentication and authorization
+- Business analytics dashboard
+- Client relationship management
 - Project management
 - Task management
 - Invoice management
 - Notifications
-- Analytics
-- Search
-- User settings
-- Responsive interface
+- Global search
+- User and workspace settings
+- Responsive application interface
 
-## Development
+## Project Architecture
 
-This project is being developed incrementally, with each major feature implemented, tested, documented, and committed independently.
+ForteFlow follows a feature-based frontend architecture with shared components, application infrastructure, and reusable utilities.
+
+## Getting Started
+
+Installation and development instructions will be expanded as the application evolves.
+
+## Development Philosophy
+
+The project is developed incrementally, with emphasis on:
+
+- Clean and maintainable code
+- Separation of concerns
+- Type safety
+- Reusable components
+- Accessible user interfaces
+- Testing and reliability
+- Secure application design
+- Clear Git history
+- Technical documentation
 
 ## License
 
-MIT
+MIT License

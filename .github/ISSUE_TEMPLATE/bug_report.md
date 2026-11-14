@@ -1,9 +1,9 @@
 ---
 name: Bug Report
 about: Report a reproducible problem in ForteFlow
-title: "[BUG] "
+title: '[BUG] '
 labels: bug
-assignees: ""
+assignees: ''
 ---
 
 ## Description
