@@ -1,8 +1,13 @@
+import { lazy, Suspense } from 'react';
+
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import { AppLayout } from '@/app/layout/app-layout.tsx';
-import { PageHeader } from '@/components/shared/page-header.tsx';
-import { DashboardPage } from '@/features/dashboard/pages/dashboard-page.tsx';
+import { AppLayout } from '@/app/layout/app-layout';
+import { PageHeader } from '@/components/shared/page-header';
+
+const DashboardPage = lazy(
+  () => import('@/features/dashboard/pages/dashboard-page'),
+);
 
 function PlaceholderPage({ title }: { title: string }) {
   return (
@@ -10,6 +15,18 @@ function PlaceholderPage({ title }: { title: string }) {
       title={title}
       description={`${title} management will be implemented in a future development phase.`}
     />
+  );
+}
+
+function PageLoading() {
+  return (
+    <div
+      className="flex min-h-[50vh] items-center justify-center"
+      role="status"
+      aria-live="polite"
+    >
+      <p className="text-sm text-muted-foreground">Loading page...</p>
+    </div>
   );
 }
 
@@ -34,7 +51,14 @@ export function AppRouter() {
         <Route element={<AppLayout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
 
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Suspense fallback={<PageLoading />}>
+                <DashboardPage />
+              </Suspense>
+            }
+          />
 
           <Route
             path="/clients"
