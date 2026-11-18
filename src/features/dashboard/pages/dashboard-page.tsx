@@ -1,166 +1,103 @@
-import {
-  ArrowUpRight,
-  BriefcaseBusiness,
-  CheckSquare,
-  FolderKanban,
-  Plus,
-  TrendingUp,
-} from 'lucide-react';
+import { FolderKanban } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui';
-
+import { Button } from '@/components/ui';
 import { PageHeader } from '@/components/shared/page-header.tsx';
 
-const statistics = [
-  {
-    label: 'Total clients',
-    value: '24',
-    change: '+12%',
-    icon: BriefcaseBusiness,
-  },
-  {
-    label: 'Active projects',
-    value: '08',
-    change: '+8%',
-    icon: FolderKanban,
-  },
-  {
-    label: 'Pending tasks',
-    value: '12',
-    change: '3 due today',
-    icon: CheckSquare,
-  },
-  {
-    label: 'Monthly revenue',
-    value: 'GHS 12,400',
-    change: '+18%',
-    icon: TrendingUp,
-  },
-];
+import { ActivityFeed } from '../components/activity-feed.tsx';
+import { ProjectProgress } from '../components/project-progress.tsx';
+import { RevenueChart } from '../components/revenue-chart.tsx';
+import { StatCard } from '../components/stat-card.tsx';
+import { TaskOverview } from '../components/task-overview.tsx';
 
-export function DashboardPage() {
+import { dashboardStats } from '../data/dashboard-data.ts';
+
+function DashboardPage() {
+  const navigate = useNavigate();
+
+  const currentHour = new Date().getHours();
+
+  const greeting =
+    currentHour < 12
+      ? 'Good morning'
+      : currentHour < 18
+        ? 'Good afternoon'
+        : 'Good evening';
+
   return (
-    <div>
+    <div className="space-y-8">
       <PageHeader
-        title="Overview"
-        description="Here's what's happening in your workspace."
-        action={<Button leftIcon={<Plus size={16} />}>Create new</Button>}
+        title={`${greeting}, Forte`}
+        description="Here's what's happening across your workspace."
+        action={
+          <Button
+            leftIcon={<FolderKanban size={16} />}
+            onClick={() => navigate('/projects')}
+          >
+            View projects
+          </Button>
+        }
       />
 
-      <section
-        aria-label="Workspace statistics"
-        className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4"
+      <div
+        className="
+        flex items-center gap-2 rounded-lg
+        border border-border bg-surface px-4 py-3
+      "
       >
-        {statistics.map((statistic) => {
-          const Icon = statistic.icon;
+        <span className="h-2 w-2 rounded-full bg-warning" />
 
-          return (
-            <Card key={statistic.label}>
-              <CardContent className="p-5">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm text-muted-foreground">
-                    {statistic.label}
-                  </p>
+        <p className="text-xs text-muted-foreground">
+          You're viewing sample workspace data. Dashboard figures are not
+          connected to a live backend.
+        </p>
+      </div>
 
-                  <div
-                    className="
-                    flex h-9 w-9 items-center justify-center
-                    rounded-lg bg-secondary text-secondary-foreground
-                  "
-                  >
-                    <Icon size={18} />
-                  </div>
-                </div>
+      <section aria-label="Workspace statistics">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-sm font-semibold text-foreground">
+            Workspace overview
+          </h2>
 
-                <p className="mt-4 text-2xl font-bold tracking-tight text-foreground">
-                  {statistic.value}
-                </p>
+          <span className="text-xs text-muted-foreground">
+            Compared to last month
+          </span>
+        </div>
 
-                <div className="mt-2">
-                  <Badge variant="success">{statistic.change}</Badge>
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
+        <div
+          className="
+          grid grid-cols-1 gap-4
+          sm:grid-cols-2 xl:grid-cols-4
+        "
+        >
+          {dashboardStats.map((stat) => (
+            <StatCard key={stat.label} stat={stat} />
+          ))}
+        </div>
       </section>
 
-      <section className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <Card className="xl:col-span-2">
-          <CardHeader>
-            <CardTitle>Recent activity</CardTitle>
-            <CardDescription>
-              A summary of recent workspace activity.
-            </CardDescription>
-          </CardHeader>
+      <section
+        aria-label="Revenue and project progress"
+        className="grid grid-cols-1 gap-6 xl:grid-cols-3"
+      >
+        <div className="min-w-0 xl:col-span-2">
+          <RevenueChart />
+        </div>
 
-          <CardContent>
-            <div className="flex min-h-48 flex-col items-center justify-center text-center">
-              <div
-                className="
-                flex h-12 w-12 items-center justify-center
-                rounded-full bg-surface-muted text-muted-foreground
-              "
-              >
-                <TrendingUp size={22} />
-              </div>
+        <div className="min-w-0">
+          <ProjectProgress />
+        </div>
+      </section>
 
-              <p className="mt-3 text-sm font-medium text-foreground">
-                Your activity will appear here
-              </p>
-
-              <p className="mt-1 max-w-sm text-sm text-muted-foreground">
-                Once your workspace features are connected, recent updates and
-                events will be displayed here.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick actions</CardTitle>
-            <CardDescription>Common workspace actions.</CardDescription>
-          </CardHeader>
-
-          <CardContent className="space-y-3">
-            <Button
-              variant="outline"
-              className="w-full justify-between"
-              leftIcon={<BriefcaseBusiness size={16} />}
-              rightIcon={<ArrowUpRight size={15} />}
-            >
-              Add a client
-            </Button>
-
-            <Button
-              variant="outline"
-              className="w-full justify-between"
-              leftIcon={<FolderKanban size={16} />}
-              rightIcon={<ArrowUpRight size={15} />}
-            >
-              Create a project
-            </Button>
-
-            <Button
-              variant="outline"
-              className="w-full justify-between"
-              leftIcon={<CheckSquare size={16} />}
-              rightIcon={<ArrowUpRight size={15} />}
-            >
-              Create a task
-            </Button>
-          </CardContent>
-        </Card>
+      <section
+        aria-label="Tasks and recent activity"
+        className="grid grid-cols-1 gap-6 xl:grid-cols-2"
+      >
+        <TaskOverview />
+        <ActivityFeed />
       </section>
     </div>
   );
 }
+
+export default DashboardPage;
