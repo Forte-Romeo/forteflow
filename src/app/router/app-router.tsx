@@ -9,6 +9,18 @@ const DashboardPage = lazy(
   () => import('@/features/dashboard/pages/dashboard-page'),
 );
 
+const LoginPage = lazy(() => import('@/features/auth/pages/login-page'));
+
+const RegisterPage = lazy(() => import('@/features/auth/pages/register-page'));
+
+const ForgotPasswordPage = lazy(
+  () => import('@/features/auth/pages/forgot-password-page'),
+);
+
+const ResetPasswordPage = lazy(
+  () => import('@/features/auth/pages/reset-password-page'),
+);
+
 function PlaceholderPage({ title }: { title: string }) {
   return (
     <PageHeader
@@ -48,6 +60,42 @@ export function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/login"
+          element={
+            <Suspense fallback={<PageLoading />}>
+              <LoginPage />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            <Suspense fallback={<PageLoading />}>
+              <RegisterPage />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/forgot-password"
+          element={
+            <Suspense fallback={<PageLoading />}>
+              <ForgotPasswordPage />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/reset-password"
+          element={
+            <Suspense fallback={<PageLoading />}>
+              <ResetPasswordPage />
+            </Suspense>
+          }
+        />
+
         <Route element={<AppLayout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
 
