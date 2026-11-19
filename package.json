@@ -12,13 +12,16 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@hookform/resolvers": "^7.0.7",
     "@tailwindcss/vite": "^4.3.5",
     "lucide-react": "^1.73.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "react-hook-form": "^7.92.0",
     "react-router-dom": "^7.18.5",
     "recharts": "^3.11.0",
-    "tailwindcss": "^4.3.5"
+    "tailwindcss": "^4.3.5",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
