@@ -136,9 +136,13 @@ Planned technology:
 - Express
 - TypeScript
 - PostgreSQL
-- node-postgres (pg)
+- node-postgres (`pg`)
+- node-pg-migrate
 - Zod
 - Pino
+- Helmet
+- CORS
+- dotenv
 - Vitest
 - Supertest
 
@@ -437,9 +441,25 @@ Changes should be committed in logical, reviewable units.
 
 Testing is organized around application responsibilities.
 
-The web application owns its frontend tests.
+### 9.1 Web application
+
+The web application will own its frontend unit and component tests.
+
+Planned tooling:
+
+- Vitest
+- React Testing Library
+
+### 9.2 Backend API
 
 The API will own its backend unit and integration tests.
+
+Planned tooling:
+
+- Vitest
+- Supertest
+
+### 9.3 Cross-application testing
 
 Cross-application tests may be introduced when integration boundaries
 require them.

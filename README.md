@@ -12,35 +12,54 @@ ForteFlow is a business operations platform designed to help small businesses an
 
 The application is being developed as a long-term software engineering project, with an emphasis on maintainable architecture, practical engineering principles, and production-quality implementation.
 
+The current implementation focuses on the frontend application and
+its core interface foundations. Authentication interactions and
+dashboard data currently use demonstration logic and mock data.
+The backend API, database integration, and real authentication
+system will be introduced in subsequent development phases.
+
 ## Technology Stack
 
-### Frontend
+### Frontend — Current
 
 - React
 - TypeScript
 - Vite
 - React Router
-- TanStack Query
 - Tailwind CSS
 - React Hook Form
 - Zod
 - Recharts
 - Lucide React
 
-### Backend and Database
+### Backend and Database — Planned
 
-- Supabase
+- Node.js
+- Express
+- TypeScript
 - PostgreSQL
+- node-postgres (`pg`)
+- node-pg-migrate
+- Zod
+- Pino
 
-### Testing
+### Testing — Planned
+
+Frontend:
 
 - Vitest
 - React Testing Library
+
+Backend:
+
+- Vitest
+- Supertest
 
 ### Development Tools
 
 - Git
 - GitHub
+- npm Workspaces
 - ESLint
 - Prettier
 
