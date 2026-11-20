@@ -57,13 +57,75 @@ The application is being developed as a long-term software engineering project, 
 - User and workspace settings
 - Responsive application interface
 
-## Project Architecture
+## Repository Architecture
 
-ForteFlow follows a feature-based frontend architecture with shared components, application infrastructure, and reusable utilities.
+ForteFlow is organized as an npm workspaces monorepo.
+
+```text
+forteflow/
+├── apps/
+│   └── web/          # React frontend
+├── packages/         # Shared packages
+├── docs/             # Project documentation
+├── .github/          # GitHub configuration
+├── package.json
+└── package-lock.json
+```
+
+### Applications
+
+| Application | Description                   | Status  |
+| ----------- | ----------------------------- | ------- |
+| `apps/web`  | React and TypeScript frontend | Active  |
+| `apps/api`  | Node.js backend API           | Planned |
+
+### Shared Packages
+
+The `packages/` directory is reserved for reusable packages that
+may be shared between applications.
 
 ## Getting Started
 
-Installation and development instructions will be expanded as the application evolves.
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository and install dependencies from its root:
+
+```bash
+npm install
+```
+
+### Development
+
+Start the web application:
+
+```bash
+npm run dev
+```
+
+### Production Build
+
+```bash
+npm run build
+```
+
+### Quality Checks
+
+```bash
+npm run lint
+npm run format:check
+```
+
+## Documentation
+
+Detailed architectural decisions and repository conventions are
+documented in:
+
+- [Monorepo Architecture](docs/architecture/monorepo-architecture.md)
 
 ## Development Philosophy
 
