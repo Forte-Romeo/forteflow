@@ -9,7 +9,10 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=@forteflow/web",
-    "build": "npm run build --workspace=@forteflow/web",
+    "dev:api": "npm run dev --workspace=@forteflow/api",
+    "build": "npm run build --workspaces --if-present",
+    "build:web": "npm run build --workspace=@forteflow/web",
+    "build:api": "npm run build --workspace=@forteflow/api",
     "lint": "eslint .",
     "preview": "npm run preview --workspace=@forteflow/web",
     "format": "prettier --write .",
