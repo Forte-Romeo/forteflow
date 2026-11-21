@@ -29,5 +29,13 @@ export default defineConfig([
     },
   },
 
+  {
+    files: ['apps/api/**/*.ts'],
+    extends: [js.configs.recommended, tseslint.configs.recommended],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
+
   eslintConfigPrettier,
 ]);
