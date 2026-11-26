@@ -13,6 +13,7 @@
     "build": "npm run build --workspaces --if-present",
     "build:web": "npm run build --workspace=@forteflow/web",
     "build:api": "npm run build --workspace=@forteflow/api",
+    "test:api": "npm run test --workspace=@forteflow/api",
     "lint": "eslint .",
     "preview": "npm run preview --workspace=@forteflow/web",
     "format": "prettier --write .",
