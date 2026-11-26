@@ -8,6 +8,8 @@ import { logger } from './lib/logger.js';
 import { errorHandler } from './middleware/error-handler.js';
 import { notFoundHandler } from './middleware/not-found-handler.js';
 
+import { apiRouter } from './routes/api.routes.js';
+
 const app = express();
 
 // Disable Express technology disclosure.
@@ -31,6 +33,9 @@ app.use(
 
 // Parse incoming JSON request bodies.
 app.use(express.json());
+
+// Mount the versioned API router.
+app.use('/api/v1', apiRouter);
 
 // Handle unmatched routes.
 app.use(notFoundHandler);
