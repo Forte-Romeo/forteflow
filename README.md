@@ -160,6 +160,11 @@ The project is developed incrementally, with emphasis on:
 - Clear Git history
 - Technical documentation
 
+## Developer Documentation
+
+- [Backend Setup and Usage](apps/api/README.md)
+- [Backend Architecture](docs/architecture/backend-architecture.md)
+
 ## License
 
 MIT License
